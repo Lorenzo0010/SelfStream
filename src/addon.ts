@@ -706,8 +706,9 @@ export default app;
 
 if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
     const port = process.env.PORT || 7000;
-    app.listen(port, () => {
-        console.log(`SelfStream running at http://127.0.0.1:${port}`);
-        console.log(`Manifest: http://127.0.0.1:${port}/manifest.json`);
+    const host = process.env.HOST || '0.0.0.0';
+    app.listen(port, host, () => {
+        console.log(`SelfStream running at http://${host}:${port}`);
+        console.log(`Manifest: http://${host}:${port}/manifest.json`);
     });
 }
